@@ -1,0 +1,21 @@
+import java.util.Scanner;
+public class Main{
+    public static boolean repeatedSubstringPattern(String s){
+        String doubled=s+s;
+        String trimmed=doubled.substring(1,doubled.length()-1);
+        return trimmed.contains(s);
+    }
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        System.out.print("Enter the String: ");
+        String s1=sc.nextLine();
+        boolean res=repeatedSubstringPattern(s1);
+        if(res){
+            System.out.println("Substring Repeated");
+        }
+        else{
+            System.out.println("Substring NOT Repeated");
+        }
+        sc.close();
+    }
+}
