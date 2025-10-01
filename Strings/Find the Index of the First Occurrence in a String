@@ -1,0 +1,25 @@
+import java.util.Scanner;
+public class Main{
+    public static int strstr(String haystack, String needle){
+        for(int i=0;i<haystack.length()-needle.length()+1;i++){
+            if(haystack.substring(i, needle.length()+i).equals(needle)){
+                return i;
+            }
+        }
+        return -1;
+    }
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        System.out.print("Enter the First String: ");
+        String h=sc.nextLine();
+        System.out.print("Enter the Second String: ");
+        String n=sc.nextLine();
+        int res=strstr(h, n);
+        if(res>=0){
+        System.out.println("The Index of the First Occurence is "+res);
+        }else{
+            System.out.println("Not Occured");
+        }
+        sc.close();
+    }
+}
