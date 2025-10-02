@@ -1,0 +1,105 @@
+public class Main{
+    Node head;
+    private int size;
+    Main(){
+        this.size=0;
+    }
+    class Node{
+        String data;
+        Node next;
+
+        Node(String data){
+            this.data=data;
+            this.next=null;
+            size++;
+        }
+    }
+
+    //Add First
+    public void addFirst(String data){
+        Node newNode=new Node(data);
+        if(head==null){
+            head=newNode;
+            return;
+        }
+        newNode.next=head;
+        head=newNode;
+    }
+
+    //Add Last
+    public void addLast(String data){
+        Node newNode=new Node(data);
+        if(head==null){
+            head=newNode;
+            return;
+        }
+        Node currNode=head;
+        while(currNode.next!=null){
+            currNode=currNode.next;
+        }
+        currNode.next=newNode;
+    }
+
+    //Print LinkedList
+    public void printLinkedList(){
+        if(head==null){
+            System.out.println("LinkedList is Empty!");
+            return;
+        }
+        Node currNode=head;
+        while(currNode!=null){
+            System.out.print(currNode.data+" -> ");
+            currNode=currNode.next;
+        }
+        System.out.println("NULL");
+    }
+
+    //Delete First
+    public void deleteFirst(){
+        if(head==null){
+            System.err.println("LinkedList is Empty!");
+            return;
+        }
+        size--;
+        head=head.next;
+    }
+
+    //Delete Last
+    public void deleteLast(){
+        if(head==null){
+            System.err.println("LinkedList is Empty!");
+            return;
+        }
+        size--;
+        if(head.next==null){
+            head=null;
+            return;
+        }
+        Node secondLast=head;
+        Node lastNode=head.next;
+        while(lastNode.next!=null){
+            lastNode=lastNode.next;
+            secondLast=secondLast.next;
+        }
+        secondLast.next=null;
+    }
+
+    //Print Size
+    public int getSize(){
+        return size;
+    }
+    public static void main(String[] args) {
+        Main list=new Main();
+        list.addFirst("a");
+        list.addFirst("is");
+        list.addFirst("This");
+        list.addLast("LinkedList");
+        list.printLinkedList();
+        list.deleteFirst();
+        list.printLinkedList();
+        list.deleteLast();
+        list.printLinkedList();
+        System.out.println("The size of the linkedlist is "+list.getSize());
+
+    }
+}
