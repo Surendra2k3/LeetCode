@@ -1,0 +1,22 @@
+import java.util.LinkedList;
+public class Main{
+    public static void main(String[] args) {
+        LinkedList<String> list=new LinkedList<>();
+        list.addFirst("a");
+        list.addFirst("is");
+        System.out.println(list);
+        list.addFirst("This");
+        list.addLast("LinkedList"); // list.add("LinkedList") This is also works
+        System.out.println(list);
+        System.out.println("The size of the LinkedList is "+list.size());
+        for(int i=0;i<list.size();i++){
+            System.out.print(list.get(i)+" -> ");
+        }
+        System.out.println("null");
+        list.remove(3); // You can also remove element by specifying its index
+        list.removeFirst();
+        System.out.println(list);
+        list.removeLast();
+        System.out.println(list);
+    }
+}
