@@ -57,7 +57,7 @@ public class Main{
     //Delete First
     public void deleteFirst(){
         if(head==null){
-            System.err.println("LinkedList is Empty!");
+            System.out.println("LinkedList is Empty!");
             return;
         }
         size--;
@@ -67,7 +67,7 @@ public class Main{
     //Delete Last
     public void deleteLast(){
         if(head==null){
-            System.err.println("LinkedList is Empty!");
+            System.out.println("LinkedList is Empty!");
             return;
         }
         size--;
