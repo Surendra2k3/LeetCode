@@ -12,6 +12,8 @@ public class Main{
         public  boolean isEmpty(){
             return head==null;
         } 
+
+        // Push
         public void push(int data){
             Node newNode=new Node(data);
             if(isEmpty()){
@@ -21,6 +23,8 @@ public class Main{
             newNode.next=head;
             head=newNode;
         } 
+
+        // Pop
         public int pop(){
             if(isEmpty()){
                 return -1;
@@ -29,6 +33,8 @@ public class Main{
             head=head.next;
             return top;
         }
+
+        // Peek
         public int peek(){
             if(isEmpty()){
                 return -1;
