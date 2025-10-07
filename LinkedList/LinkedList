@@ -1,0 +1,181 @@
+public class Main {
+    Node head;
+    private int size;
+    Main(){
+        this.size=0;
+    }
+    class Node{
+        int data;
+        Node next;
+        Node(int data){
+            this.data=data;
+            this.next=null;
+            size++;
+        }
+    }
+
+    // AddFirst
+    public void AddFirst(int data){
+        Node newNode=new Node(data);
+        if(head==null){
+            head=newNode;
+            return;
+        }
+        newNode.next=head;
+        head=newNode;
+    }
+
+    // AddLast
+    public void AddLast(int data){
+        Node newNode=new Node(data);
+        if(head==null){
+            head=newNode;
+            return;
+        }
+        Node currNode=head;
+        while(currNode.next!=null){
+            currNode=currNode.next;
+        }
+        currNode.next=newNode;
+    }
+
+    // DeleteFirst
+    public void DeleteFirst(){
+        if(head==null){
+            System.out.println("LinkedList is Empty!");
+            return;
+        }
+        size--;
+        head=head.next;
+    }
+
+    // DeleteLast
+    public void DeleteLast(){
+       if(head==null){
+            System.out.println("LinkedList is Empty!");
+            return;
+        }
+        size--;
+        if(head.next==null){
+            head=null;
+            return;
+        }
+        Node secNode=head;
+        Node lastNode=head.next;
+        while(lastNode.next!=null){
+            lastNode=lastNode.next;
+            secNode=secNode.next;
+        }
+        secNode.next=null;
+    }
+
+    //ReverseList
+    public void ReverseList(){
+        Node prev=null;
+        Node curr=head;
+        Node next=null;
+        while(curr!=null){
+            next=curr.next;
+            curr.next=prev;
+            prev=curr;
+            curr=next;
+        }
+        head=prev;
+    }
+
+    // MiddleNode
+    public void MiddleNode(){
+        Node slow=head, fast=head;
+        while(fast!=null && fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        System.out.println("Middle Node is "+slow.data);
+    }
+
+    //CreateLoop
+    public void CreateLoop(){
+        if(head==null || head.next==null){
+            return;
+        }
+        Node last=head;
+        while(last.next!=null){
+            last=last.next;
+        }
+        last.next=head.next;
+    }
+
+    // DetectLoop
+    public void DetectLoop(){
+        Node slow=head, fast=head;
+        boolean hasloop=false;
+        while(fast!=null && fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+            if(slow==fast){
+                hasloop=true;
+                break;
+            }
+        }
+        System.out.println("Loop Detected: "+hasloop);
+    }
+
+    // RemoveDuplicates in a Sorted LinkedList
+    public void RemoveDuplicates(){
+        Node curr=head;
+        while(curr!=null && curr.next!=null){
+            if(curr.data==curr.next.data){
+                curr.next=curr.next.next;
+            }else{
+                curr=curr.next;
+            }
+        }
+    }
+
+    // Nth Node from the End
+    public void NthNode(int n){
+        Node first=head, second=head;
+        for(int i=0;i<n;i++){
+            first=first.next;
+        }
+        while(first!=null){
+            first=first.next;
+            second=second.next;
+        }
+        System.out.println("The Nth Node is "+second.data);
+    }
+
+    // PrintSize
+    public int PrintSize(){
+        return size;
+    }
+
+    // PrintList
+    public void PrintList(){
+        if(head==null){
+            System.out.println("LinkedList is Empty!");
+            return;
+        }
+        Node currNode=head;
+        while(currNode!=null){
+            System.out.print(currNode.data+" -> ");
+            currNode=currNode.next;
+        }
+        System.out.println("Null");
+    }
+
+    public static void main(String[] args) {
+        Main list=new Main();
+        list.AddFirst(1);
+        list.AddLast(2);
+        list.AddLast(3);
+        list.AddLast(4);
+        list.AddLast(5);
+        list.PrintList();
+        System.out.println("The size is "+list.PrintSize());
+        list.MiddleNode();
+        list.NthNode(2);
+        list.CreateLoop();
+        list.DetectLoop();
+    }
+}
