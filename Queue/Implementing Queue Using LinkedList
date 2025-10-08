@@ -1,0 +1,63 @@
+public class Main{
+    static class Node{
+        int data;
+        Node next;
+        Node(int data){
+            this.data=data;
+            next=null;
+        }
+    }
+    static class Queue{
+        public static Node head=null;
+        public static Node tail=null;
+
+        public boolean isEmpty(){
+            return head==null & tail==null;
+        }
+
+        // Enqueue
+        public void add(int data){
+            Node newNode=new Node(data);
+            if(tail==null){
+                tail=head=newNode;
+                return;
+            }
+            tail.next=newNode;
+            tail=newNode;
+        }
+
+        //Dequeue
+        public int remove(){
+            if(isEmpty()){
+                System.out.println("Queue is Empty!");
+                return -1;
+            }
+            int front=head.data;
+            if(head==tail){
+                tail=null;
+            }
+            head=head.next;
+            return front;
+        }
+
+        // Peek
+        public int Peek(){
+            if(isEmpty()){
+                System.out.println("Queue is Empty!");
+                return -1;
+            }
+            return head.data;
+        }
+    }
+
+    public static void main(String[] args) {
+        Queue q=new Queue();
+        q.add(1);
+        q.add(2);
+        q.add(3);
+        while(!q.isEmpty()){
+            System.out.println(q.Peek());
+            q.remove();
+        }
+    }
+}
