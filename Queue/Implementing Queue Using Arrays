@@ -14,7 +14,7 @@ public class Main{
         }
 
         // Enqueue
-        public void add(int data){
+        public void Enqueue(int data){
             if(rear==size-1){
                 System.out.println("Queue is Full!");
                 return;
@@ -24,7 +24,7 @@ public class Main{
         }
 
         // Dequeue
-        public int remove(){
+        public int Dequeue(){
             if(isEmpty()){
                 System.out.println("Queue is Empty!");
                 return -1;
@@ -48,12 +48,12 @@ public class Main{
     }
     public static void main(String[] args) {
         Queue q=new Queue(5);
-        q.add(1);
-        q.add(2);
-        q.add(3);
+        q.Enqueue(1);
+        q.Enqueue(2);
+        q.Enqueue(3);
         while(!q.isEmpty()){
             System.out.println(q.peek());
-            q.remove();
+            q.Dequeue();
         }
     }
 }
